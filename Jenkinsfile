@@ -13,7 +13,7 @@ pipeline {
                 sh "cd /var/lib/jenkins/workspace/reactApp/build"
                 sh "pwd"
                 sh "ls -l"
-                sh 'docker build -t web_app:${GIT_COMMIT} .'
+                sh 'docker build -t web_app:${GIT_COMMIT} ./build'
                 sh 'docker images'
                     }
                 }
