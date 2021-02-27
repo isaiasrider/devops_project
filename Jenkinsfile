@@ -10,7 +10,7 @@ pipeline {
         stage('Build') {
              steps {
                 sh "pwd"
-                sh "cd build/"
+                sh "cd /var/lib/jenkins/workspace/reactApp/build"
                 sh "pwd"
                 sh "ls -l"
                 sh 'docker build -t web_app:${GIT_COMMIT} .'
