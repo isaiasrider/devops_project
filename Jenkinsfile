@@ -9,8 +9,7 @@ pipeline {
         }
         stage('Build') {
              steps {
-                sh 'pwd'
-                sh 'ls -l'
+                sh "cd build/"
                 sh 'docker build -t web_app:${GIT_COMMIT} .'
                 sh 'docker images'
                     }
