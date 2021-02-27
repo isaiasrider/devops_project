@@ -1,1 +1,5 @@
-from alpine
+FROM node:14
+
+COPY ./app /opt/
+WORKDIR /opt/
+CMD npm start
