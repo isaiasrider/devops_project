@@ -9,7 +9,8 @@ pipeline {
         }
         stage('Build') {
              steps {
-                sh 'docker ps && docker images'
+                sh 'docker build -t web_app:$sha1 .'
+                sh 'docker images'
                     }
                 }
         stage('Test') {
