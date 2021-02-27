@@ -20,7 +20,7 @@ pipeline {
         stage('Test') {
              steps {
                 sh "docker run -d --network host web_app:${GIT_COMMIT}"
-                sh "curl -X GET http://localhost/"
+                sh "curl -X GET http://localhost:3000/"
                 sh "docker rm -f \$(docker ps -q)"
                     }
                 }
