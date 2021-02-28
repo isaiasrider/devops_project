@@ -24,8 +24,5 @@ data template_file "user-data" {
   }
 }
 
-data aws_iam_instance_profile "profile" {
-  name = "AdminAccess"
-}
 
 
