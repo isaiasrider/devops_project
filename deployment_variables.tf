@@ -1,1 +1,3 @@
-variable "container_version" {}
+variable "container_version" {
+  type = string
+}
