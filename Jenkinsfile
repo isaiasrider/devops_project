@@ -4,7 +4,7 @@ pipeline {
     stages {
             stage('Checkout Branch') {
                         steps {
-                              sh "checkout feito pelo proprio job"
+                              sh "echo 'checkout feito pelo proprio job'"
                         }
                     }
         stage('Build') {
