@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('checkout') {
             stage('Checkout Branch') {
                         steps {
                             checkout([$class: 'GitSCM', branches: [[name: '${sha1}']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'githubTOKEN', url: 'https://github.com/isaiasrider/devops_project.git']]])
@@ -32,5 +31,4 @@ pipeline {
                     }
                 }
     }
-}
 }
