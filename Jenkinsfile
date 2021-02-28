@@ -4,8 +4,7 @@ pipeline {
     stages {
             stage('Checkout Branch') {
                         steps {
-                            checkout([$class: 'Git', branches: [[name: '${sha1}']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'githubTOKEN', url: 'https://github.com/isaiasrider/devops_project.git']]])
-
+                              sh "checkout feito pelo proprio job"
                         }
                     }
         stage('Build') {
