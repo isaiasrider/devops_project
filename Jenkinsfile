@@ -19,11 +19,7 @@ pipeline {
                     }
                 }
         stage('Test') {
-        agent {
-          docker {
-              image 'web_app:${GIT_COMMIT}'
-          }
-        }
+        agent { docker 'web_app:${GIT_COMMIT}' }
              steps {
                // sh "docker run -d -p0.0.0.0:80:3000 web_app:${GIT_COMMIT}"
                 sh "curl -X GET http://localhost/"
