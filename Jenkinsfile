@@ -23,6 +23,8 @@ pipeline {
         stage('Delivery') {
              steps {
                sh "aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 622021885326.dkr.ecr.us-east-2.amazonaws.com"
+               sh "docker tag web_app:${GIT_COMMIT} 622021885326.dkr.ecr.us-east-2.amazonaws.com/devops:${GIT_COMMIT}"
+               sh "docker push 622021885326.dkr.ecr.us-east-2.amazonaws.com/devops:${GIT_COMMIT}"
 
                              }
                         }
