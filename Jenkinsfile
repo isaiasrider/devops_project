@@ -33,7 +33,7 @@ pipeline {
               sh "terraform init && terraform get"
 //              sh "export TF_VAR_container_version=${GIT_COMMIT}"
 //              sh "echo $TF_VAR_container_version"
-              sh "terraform plan -var=container_version=${GIT_COMMIT} -var=build=${BUILD_DISPLAY_NAME} && terraform apply -var=container_version=${GIT_COMMIT} -var=build=${BUILD_DISPLAY_NAME} --auto-approve"
+              sh "terraform plan -var=container_version=${GIT_COMMIT} -var=build=${GIT_COMMIT} && terraform apply -var=container_version=${GIT_COMMIT} -var=build=${GIT_COMMIT} --auto-approve"
 
                              }
                         }
