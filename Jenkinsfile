@@ -3,10 +3,12 @@ pipeline {
 
     stages {
         stage('checkout') {
-            steps {
-                echo "O checkout já é feito pelo plugin github contido na configuração do pipeline. Porém, SIM, pode ser scriptada"
-            }
-        }
+            stage('Checkout Branch') {
+                        steps {
+                            checkout([$class: 'GitSCM', branches: [[name: '${sha1}']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'GM-TOOLS', url: 'https://github.com/greenmilellc-org/gm-driver7.git']]])
+
+                        }
+                    }
         stage('Build') {
              steps {
                 sh "pwd"
@@ -18,10 +20,15 @@ pipeline {
                     }
                 }
         stage('Test') {
+        agent {
+          docker {
+              image 'web_app:${GIT_COMMIT}'
+          }
+        }
              steps {
-                sh "docker run -d -p0.0.0.0:80:3000 web_app:${GIT_COMMIT}"
+               // sh "docker run -d -p0.0.0.0:80:3000 web_app:${GIT_COMMIT}"
                 sh "curl -X GET http://localhost/"
-                sh "docker rm -f \$(docker ps -q)"
+            //    sh "docker rm -f \$(docker ps -q)"
                     }
                 }
     }
