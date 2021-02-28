@@ -26,6 +26,7 @@ data template_file "user-data" {
 
 data aws_iam_instance_profile "profile" {
   name = "AdminAccess"
+  role_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
 }
 
 
