@@ -5,5 +5,4 @@ module "deployment" {
   enable_autoscaling = false
   max_size = 2
   min_size = 1
-  server_name = ""
 }
