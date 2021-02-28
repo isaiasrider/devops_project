@@ -31,9 +31,8 @@ pipeline {
          stage('Deployment') {
              steps {
               sh "terraform init && terraform get"
-//              sh "export TF_VAR_container_version=${GIT_COMMIT}"
-//              sh "echo $TF_VAR_container_version"
-              sh "terraform plan -var=container_version=${GIT_COMMIT} -var=build=${GIT_COMMIT} && terraform apply -var=container_version=${GIT_COMMIT} -var=build=${GIT_COMMIT} --auto-approve"
+              sh "export version=`echo $GIT_COMMIT|cut -c 1-5`"
+              sh "terraform plan -var=container_version=${GIT_COMMIT} -var=build=${version} && terraform apply -var=container_version=${GIT_COMMIT} -var=build=${version} --auto-approve"
 
                              }
                         }

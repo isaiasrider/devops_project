@@ -3,10 +3,11 @@ provider "aws" {
 }
 module "deployment" {
   source = "github.com/isaiasrider/terraform-modules//modules/services/webserver_cluster?ref=devops-v1.0.3"
-  cluster_name = format("%.5f",var.build)
+  cluster_name = var.build
   enable_autoscaling = false
   max_size = 2
   min_size = 1
   container_version = var.container_version
+
 
 }
