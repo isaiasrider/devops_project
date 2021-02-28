@@ -30,7 +30,8 @@ pipeline {
                         }
          stage('Deployment') {
              steps {
-              sh "terraform init && terraform plan"
+              sh "terraform init && terraform get"
+              sh "terraform plan && terraform apply --auto-approve"
 
                              }
                         }
@@ -38,7 +39,6 @@ pipeline {
 
     }
 }
-
      always {
              sh "terraform destroy --auto-approve"
      }
