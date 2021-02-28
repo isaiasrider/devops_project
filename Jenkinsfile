@@ -28,5 +28,13 @@ pipeline {
 
                              }
                         }
+         stage('Deployment') {
+             steps {
+              sh "terraform init && terraform plan"
+
+                             }
+                        }
+
+
     }
 }
