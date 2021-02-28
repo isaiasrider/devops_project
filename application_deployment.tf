@@ -8,14 +8,17 @@ module "deployment" {
   max_size = 2
   min_size = 1
   container_version = var.container_version
-  user_data = <<EOF
-#!/bin/bash
-container_version=\${container_version}
-yum update -y
-yum install docker
-docker run -d -p80:3000 622021885326.dkr.ecr.us-east-2.amazonaws.com/devops:\${container_version}
-
-EOF
+  user_data = data.template_file.user-data.rendered
 
 
+
+}
+
+data template_file "user-data" {
+  template = "${file("${path.module}./user-data.sh")}"
+  vars = {
+
+    container_version = var.container_version
+
+  }
 }
