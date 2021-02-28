@@ -31,7 +31,7 @@ pipeline {
          stage('Deployment') {
              steps {
               sh "terraform init && terraform get"
-              sh "terraform plan && terraform apply --auto-approve"
+              sh "terraform plan && terraform apply -var container_version=${GIT_COMMIT} --auto-approve"
 
                              }
                         }
