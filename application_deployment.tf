@@ -15,7 +15,7 @@ module "deployment" {
 }
 
 data template_file "user-data" {
-  template = "${file("${path.module}./user-data.sh")}"
+  template = "${file("${path.module}/user-data.sh")}"
   vars = {
 
     container_version = var.container_version
