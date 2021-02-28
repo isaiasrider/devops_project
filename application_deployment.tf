@@ -9,7 +9,7 @@ module "deployment" {
   min_size = 1
   container_version = var.container_version
   user_data = data.template_file.user-data.rendered
-  instance_profile = "arn":aws:iam::622021885326:instance-profile/AdminAccess"
+  instance_profile = "arn:aws:iam::622021885326:instance-profile/AdminAccess"
 
 
 
