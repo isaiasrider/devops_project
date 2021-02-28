@@ -9,7 +9,7 @@ module "deployment" {
   min_size = 1
   container_version = var.container_version
   user_data = data.template_file.user-data.rendered
-  instance_profile = data.aws_iam_instance_profile.profile.path
+  instance_profile = "arn":aws:iam::622021885326:instance-profile/AdminAccess"
 
 
 
@@ -26,7 +26,6 @@ data template_file "user-data" {
 
 data aws_iam_instance_profile "profile" {
   name = "AdminAccess"
-  path = "arn:aws:iam::622021885326:instance-profile/AdminAccess"
 }
 
 
